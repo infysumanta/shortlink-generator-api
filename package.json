@@ -1,0 +1,25 @@
+{
+  "name": "shortlink-generator-api",
+  "version": "1.0.0",
+  "description": "NodeJs and Express Server to generate Shortlink",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": "https://github.com/infysumanta/shortlink-generator-api",
+  "author": "Sumanta Kabiraj",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "shortid": "^2.2.16",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
