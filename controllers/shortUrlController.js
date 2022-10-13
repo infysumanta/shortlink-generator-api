@@ -10,14 +10,26 @@ let shortUrlCreate = async (req, res, next) => {
         shortId: shortId.generate(),
         fullUrl: link,
       };
-      ShortUrl.create(body, (err, data) => {
+      ShortUrl.findOne({ fullUrl: link }, (err, short) => {
         if (err) return next(err);
-        return res.json({
-          status: true,
-          shortId: data.shortId,
-          fullUrl: data.fullUrl,
-          message: "Short Link created successfully",
-        });
+        if (short) {
+          return res.json({
+            status: true,
+            shortId: short.shortId,
+            fullUrl: short.fullUrl,
+            message: "Short Link Already Exists",
+          });
+        } else {
+          ShortUrl.create(body, (err, data) => {
+            if (err) return next(err);
+            return res.json({
+              status: true,
+              shortId: data.shortId,
+              fullUrl: data.fullUrl,
+              message: "Short Link created successfully",
+            });
+          });
+        }
       });
     } catch (err) {
       console.log(err);
