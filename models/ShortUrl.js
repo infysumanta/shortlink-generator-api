@@ -5,6 +5,7 @@ const ShortUrl = new Schema(
   {
     shortId: { type: String, required: true },
     fullUrl: { type: String, required: true },
+    hitCount: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
